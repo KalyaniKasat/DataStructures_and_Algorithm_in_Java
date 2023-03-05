@@ -3,6 +3,7 @@
 ## Table of Contents
 
 1. [Array](#array)
+2. [SQL Tutorial](sql.md)
 
 
 ## Array
@@ -52,6 +53,25 @@ class Solution {
             j--;
         }
         return ConcatValue;         
+    }
+}
+```  
+
+**[1.3] Plus One [link](https://leetcode.com/problems/plus-one/description/)**
+
+```java
+class Solution {
+    public int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+	if (digits[i] < 9) {
+		digits[i]++;
+		return digits;
+	}
+	digits[i] = 0;
+}
+    digits = new int[digits.length + 1];
+    digits[0] = 1;
+    return digits;      
     }
 }
 ```

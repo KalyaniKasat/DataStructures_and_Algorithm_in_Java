@@ -146,7 +146,29 @@ The conditions given to the table is called as constraints.
 ```sql
    CHECK (condition);
 ```
+**[5.1.4] Primary key**    
+It is used to uniquely identify the record from the table.
 
+characteristics of Primary key :-
+
+- It should be UNIQUE.
+- It should be NOT NULL.
+- It should be combination of UNIQUE and NOT NULL.
+- There should be only one primary key in a table.
+- Primary key is not mandatory but designwise preferable.  
+
+**[5.1.5] Foreign key**    
+It is used to establish connection between two tables.
+
+characteristics of Foreign key :-
+
+- It can have duplicate values.
+- It can be NULL.
+- Combination of UNIQUE and NOT NULL is not required.
+- Foreign is not mandatory.
+- If a column wants to become foreign key it should be primary key in its own table.
+- Foreign key actually belongs to parent table but stays in child table to establish the connection between those two tables.
+- It is also called as **referential integrity constraint**.
 
 
 
