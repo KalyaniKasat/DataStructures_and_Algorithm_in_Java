@@ -86,3 +86,40 @@ class Solution {
     }
 } 
 ```
+
+**[1.5] Top K Frequent Elements [link](https://leetcode.com/problems/top-k-frequent-elements/description/)**
+
+```java
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        List <Integer> [] bucket = new List [nums.length + 1];
+        HashMap<Integer,Integer> ElementCountPair = new HashMap<>();
+        for(int value: nums)
+        {
+            ElementCountPair.put(value,ElementCountPair.getOrDefault(value,0) + 1);         
+        }
+        for(int key : ElementCountPair.keySet())
+        {
+             int count = ElementCountPair.get(key);
+             if(bucket[count] == null)
+             {
+                 bucket[count] = new ArrayList<>();
+             }
+             bucket[count].add(key);
+        }
+        int OutputArray [] = new int[k];
+        int counting=0;
+        for(int i=bucket.length-1; i>=0 && counting<k; i--)
+        {
+            if(bucket[i]!=null)
+            {
+                for(Integer integer:  bucket[i])
+                {
+                    OutputArray[counting++]= integer;
+                }
+            }
+        }
+        return OutputArray;
+    }
+}
+```
