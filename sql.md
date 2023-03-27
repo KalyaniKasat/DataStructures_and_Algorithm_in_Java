@@ -9,6 +9,7 @@
 5. [Constraints](#constraints)
 6. [SQL Language](#sql-languages)
 7. [Problem set](#problem-set)
+8. [Leetcode Problem Set](#leetcode-problem-set)
 
 ## DBMS 
 - It stands for database management system.
@@ -864,3 +865,13 @@ WHERE JOB IN ('CLERK','ANALYST') AND DEPTNO IN (SELECT DEPTNO
 ```
 
 
+## Leetcode Problem Set
+
+**[8.1] Duplicate Emails [link](https://leetcode.com/problems/duplicate-emails/description/)**
+
+``` sql
+SELECT email as Email
+FROM Person
+GROUP BY email
+HAVING COUNT(email)>1;
+```
