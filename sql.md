@@ -875,3 +875,95 @@ FROM Person
 GROUP BY email
 HAVING COUNT(email)>1;
 ```
+
+**[8.2] Customers Who Never Order [link](https://leetcode.com/problems/customers-who-never-order/description/)**
+``` sql
+SELECT name AS Customers
+FROM Customers
+WHERE id NOT IN (SELECT customerID
+                 FROM Orders);
+```
+**[8.3] Fix Names in a Table [link](https://leetcode.com/problems/fix-names-in-a-table/description/)**
+``` sql
+SELECT  user_id as user_id , INITCAP(name) as name
+FROM Users
+order by user_id;
+```
+
+
+**[8.4] Patients With a Condition [link](https://leetcode.com/problems/patients-with-a-condition/description/)**
+``` sql
+SELECT *
+FROM Patients
+WHERE conditions LIKE 'DIAB1%' OR conditions LIKE '% DIAB1%';
+```
+
+**[8.5] Combine Two Tables [link](https://leetcode.com/problems/combine-two-tables/description/)**
+``` sql
+SELECT firstName,lastName,city,state
+FROM Person,Address
+WHERE Person.personId =Address.personId (+);
+```
+**[8.6] Employees Earning More Than Their Managers [link](https://leetcode.com/problems/employees-earning-more-than-their-managers/description/)**
+``` sql
+SELECT E1.name Employee
+FROM Employee E1,Employee E2
+WHERE E1.managerId = E2.id AND E1.salary>E2.salary;
+```
+**[8.7] Delete Duplicate Emails [link](https://leetcode.com/problems/delete-duplicate-emails/description/)**
+``` sql
+#MySQL
+DELETE p1 
+FROM person p1 INNER JOIN person p2 
+ON p1.email = p2.email 
+WHERE p1.id > p2.id;
+```
+**[8.8] Employee Bonus [link](https://leetcode.com/problems/employee-bonus/description/)**
+``` sql
+SELECT name as name,bonus as bonus
+FROM Employee,Bonus
+WHERE Employee.empID=Bonus.empID(+) AND (bonus IS NULL OR bonus<1000);
+```
+
+**[8.9] Find Customer Referee [link](https://leetcode.com/problems/find-customer-referee/description/)**
+``` sql
+SELECT name
+FROM Customer
+WHERE referee_id IS NULL OR referee_id!=2;
+```
+
+**[8.10] Customer Placing the Largest Number of Orders [link](https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/description/)**
+``` sql
+#MYSQL
+SELECT customer_number
+FROM Orders
+GROUP BY customer_number
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+```
+
+**[8.11]Big Countries [link](https://leetcode.com/problems/big-countries/description/)**
+``` sql
+#MYSQL
+SELECT name,population,area
+FROM World
+WHERE area >= '3000000' OR population >= '25000000';
+```
+
+**[8.12]Classes More Than 5 Students [link](https://leetcode.com/problems/classes-more-than-5-students/description/)**
+``` sql
+#MYSQL
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(*)>=5;
+```
+**[8.13]Sales Person [link](https://leetcode.com/problems/sales-person/description/)**
+``` sql
+SELECT name
+FROM SalesPerson
+WHERE sales_id NOT IN (SELECT sales_id
+                       FROM Orders,Company
+                       WHERE Orders.com_id=Company.com_id AND name='RED');
+```
+
